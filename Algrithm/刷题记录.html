@@ -1,0 +1,410 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>刷题记录 | 塞 尔 达 是 天</title><meta name="author" content="waar299"><meta name="copyright" content="waar299"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="哥们的算法进阶指南 图论相关  Floyd   搜索相关  Dfs   数论相关  质数   日期相关  dp相关  数字三角形 最长上升子序列 背包问题 状态机模型 状态压缩dp 区间dp   高级数据结构  线段树   破环成链相关  周赛不会题目汇总  每日一题汇总    图论相关Floyd 3512. 最短距离总和 - AcWing题库：这个题就是Floyd的变种，要注意Floyd中不存在">
+<meta property="og:type" content="website">
+<meta property="og:title" content="刷题记录">
+<meta property="og:url" content="http://blog.600759.xyz/Algrithm/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95.html">
+<meta property="og:site_name" content="塞 尔 达 是 天">
+<meta property="og:description" content="哥们的算法进阶指南 图论相关  Floyd   搜索相关  Dfs   数论相关  质数   日期相关  dp相关  数字三角形 最长上升子序列 背包问题 状态机模型 状态压缩dp 区间dp   高级数据结构  线段树   破环成链相关  周赛不会题目汇总  每日一题汇总    图论相关Floyd 3512. 最短距离总和 - AcWing题库：这个题就是Floyd的变种，要注意Floyd中不存在">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202310301011694.jpg">
+<meta property="article:published_time" content="2023-11-10T07:36:22.000Z">
+<meta property="article:modified_time" content="2023-12-19T06:21:28.849Z">
+<meta property="article:author" content="waar299">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202310301011694.jpg"><link rel="shortcut icon" href="/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '刷题记录',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-12-19 14:21:28'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/myloadcss.css?1"><link rel="stylesheet" href="/css/icat.css?1"><!-- hexo injector head_end start --><link rel="icon" href="https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202312191557352.ico" type="image/x-icon"><!-- hexo injector head_end end --></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202310301011694.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">74</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">44</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="icat_menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="icat_menus_item"><a class="site-page" href="/Algrithm/"><i class="fa-fw fas fa-book"></i><span> 算法</span></a></div><div class="icat_menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="icat_menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202310301051253.jpg')"><nav id="nav"><div id="nav-group"><span id="blog-info"><a href="/" title="塞 尔 达 是 天"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202312191558538.png"/><span class="site-name">塞 尔 达 是 天</span></a></span><div id="menus"><div class="menus_items"><div class="icat_menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="icat_menus_item"><a class="site-page" href="/Algrithm/"><i class="fa-fw fas fa-book"></i><span> 算法</span></a></div><div class="icat_menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="icat_menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div><div id="nav-right"></div></div></nav><div id="page-site-info"><h1 id="site-title">刷题记录</h1></div></header><main class="layout" id="content-inner"><div id="page"><div id="article-container"><h1 id="哥们的算法进阶指南"><a href="#哥们的算法进阶指南" class="headerlink" title="哥们的算法进阶指南"></a>哥们的算法进阶指南</h1><ul>
+<li><p><a href="#%E5%9B%BE%E8%AE%BA%E7%9B%B8%E5%85%B3">图论相关</a></p>
+<ul>
+<li><a href="#Floyd">Floyd</a></li>
+</ul>
+</li>
+<li><p><a href="#%E6%90%9C%E7%B4%A2%E7%9B%B8%E5%85%B3">搜索相关</a></p>
+<ul>
+<li><a href="#Dfs">Dfs</a></li>
+</ul>
+</li>
+<li><p><a href="#%E6%95%B0%E8%AE%BA%E7%9B%B8%E5%85%B3">数论相关</a></p>
+<ul>
+<li><a href="#%E8%B4%A8%E6%95%B0">质数</a></li>
+</ul>
+</li>
+<li><p><a href="#%E6%97%A5%E6%9C%9F%E7%9B%B8%E5%85%B3">日期相关</a></p>
+</li>
+<li><p><a href="#dp%E7%9B%B8%E5%85%B3">dp相关</a></p>
+<ul>
+<li><a href="#%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A2">数字三角形</a></li>
+<li><a href="#%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97">最长上升子序列</a></li>
+<li><a href="#%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98">背包问题</a></li>
+<li><a href="#%E7%8A%B6%E6%80%81%E6%9C%BA%E6%A8%A1%E5%9E%8B">状态机模型</a></li>
+<li><a href="#%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp">状态压缩dp</a></li>
+<li><a href="#%E5%8C%BA%E9%97%B4dp">区间dp</a></li>
+</ul>
+</li>
+<li><p><a href="#%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">高级数据结构</a></p>
+<ul>
+<li><a href="#%E7%BA%BF%E6%AE%B5%E6%A0%91">线段树</a></li>
+</ul>
+</li>
+<li><p><a href="#%E7%A0%B4%E7%8E%AF%E6%88%90%E9%93%BE%E7%9B%B8%E5%85%B3">破环成链相关</a></p>
+</li>
+<li><p><a href="#%E5%91%A8%E8%B5%9B%E4%B8%8D%E4%BC%9A%E9%A2%98%E7%9B%AE%E6%B1%87%E6%80%BB">周赛不会题目汇总</a></p>
+</li>
+<li><p><a href="#%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E6%B1%87%E6%80%BB">每日一题汇总</a></p>
+</li>
+</ul>
+<hr>
+<h2 id="图论相关"><a href="#图论相关" class="headerlink" title="图论相关"></a>图论相关</h2><h3 id="Floyd"><a href="#Floyd" class="headerlink" title="Floyd"></a>Floyd</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/3515/">3512. 最短距离总和 - AcWing题库</a>：这个题就是Floyd的变种，要注意Floyd中不存在负环不然最短距离可能为负无穷。还有在<code>dp[k][i][j] = min(dp[k-1][i][j],dp[k-1][i][k] + dp[k-1][k][j]</code>的转移公式中，和背包的三维化成二维的思想不一样，背包的是<code>dp[k-1][i]</code>永远不会被更新。但是Floyd中，<code>dp[k-1][i][k]</code>，也就是<code>dp[i][k]</code>可能是<code>dp[k-1][i][k]</code>也可能是<code>dp[k][i][k]</code>。（因为图中不存在负环，所以可以证明：所有最短路中的任意一条每个点只经过一次，因此不管是是<code>dp[k-1][i][k]</code>也可能是<code>dp[k][i][k]</code>都可以保证是最短路，不影响。）</li>
+</ul>
+<hr>
+<h2 id="搜索相关"><a href="#搜索相关" class="headerlink" title="搜索相关"></a>搜索相关</h2><h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/3483/">3480. 棋盘游戏 - AcWing题库</a>：其实重点就是分析路径中是否有回路，然后记得剪枝。具体看题解，其实是可以有回路得，为了避免<code>TLE</code>那就限制<code>ans</code>。</li>
+</ul>
+<hr>
+<h2 id="数论相关"><a href="#数论相关" class="headerlink" title="数论相关"></a>数论相关</h2><h3 id="质数"><a href="#质数" class="headerlink" title="质数"></a>质数</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/3500/">3497. 质数 - AcWing题库</a>：<ul>
+<li>第100个质数是：541；</li>
+<li>第500个质数是：3571；</li>
+<li>第1000个质数是：7919；</li>
+<li>第10000个质数是：104729；</li>
+<li>第70000个质数是：882377。</li>
+</ul>
+</li>
+</ul>
+<h3 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6772975/">AcWing 532. 货币系统 - AcWing</a>：这个题目用到了线性代数中极大无关组的概念。可以注意下<a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/1112186/">为什么完全背包和01背包优化后第二层循环不一样</a>。</li>
+</ul>
+<hr>
+<h2 id="日期相关"><a href="#日期相关" class="headerlink" title="日期相关"></a>日期相关</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/3501/">3498. 日期差值 - AcWing题库</a>：关于日期问题都是有模板的。第一个就是记录平年每月份有多少天的数组。第二个就是判断某一年是不是闰年。第三个就是返回某一年某一月有几天。</li>
+</ul>
+<hr>
+<h2 id="dp相关"><a href="#dp相关" class="headerlink" title="dp相关"></a>dp相关</h2><h3 id="数字三角形"><a href="#数字三角形" class="headerlink" title="数字三角形"></a>数字三角形</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/1017/">1015. 摘花生 - AcWing题库</a>：这个就是数字三角形。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/1020/">1018. 最低通行费 - AcWing题库</a>：这个题目就是摘花生的变种，主要是题目限制了步数，但是经过分析，可以知道这个限制将题目归类为和摘花生一样的题目。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6495627/">AcWing 1027. 方格取数 - AcWing</a>：这个题目就是走两边的摘花生，需要注意的是dp数组的选取，以及优化，和为什么是同时走。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6500627/">AcWing 275. 传纸条 - AcWing</a>：如何将这个问题转换成方格取数问题</li>
+</ul>
+<h3 id="最长上升子序列"><a href="#最长上升子序列" class="headerlink" title="最长上升子序列"></a>最长上升子序列</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6503546/">AcWing 1017. 怪盗基德的滑翔翼 - AcWing</a>：就是最基本的最长上升子序列问题，其中需要注意的是时间复杂度高的时候可以用二分做</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/problem/content/1260/">AcWing 1014. 登山 - AcWing</a>：需要掌握一个以i开头的最长下降子序列的求法</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6509030/">AcWing 482. 合唱队形 - AcWing</a>：和登山一模一样</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6509259/">AcWing 1012. 友好城市 - AcWing</a>：如何将两岸交叉转换为一边的最长上升子序列问题</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6512743/">AcWing 1016. 最大上升子序列和 - AcWing</a>：就是板子拉~</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6516727/">AcWing 1010. 拦截导弹 - AcWing</a>：这个题目其实使用贪心来做的，<strong>需要研究一下使用贪心解决最长上升子序列问题和使用贪心解决一个序列中上升序列最小值的相同</strong></li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/1273700/">AcWing 896. 最长上升子序列 II - AcWing</a>：这个题目就是同上面的问题差不多，但是g数组存放的内容不一样。需要好好复习。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6538729/">AcWing 187. 导弹防御系统 - AcWing</a>：在<a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6516727/">AcWing 1010. 拦截导弹 - AcWing</a>加上一个暴搜，注意的是时间范围为什么可以过，数据小加上剪枝。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/1118057/">AcWing 897. 最长公共子序列 - AcWing</a>：dp划分是根据i，j对应两个字母是否相等进行划分的。</li>
+<li>**<a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6542926/">AcWing 272. 最长公共上升子序列 - AcWing</a>**：这个题目的dp划分是根据<a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/1118057/">AcWing 897. 最长公共子序列 - AcWing</a>和<a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/1117956/">AcWing 895. 最长上升子序列 - AcWing</a>结合进行划分的。其中设计一个优化循环可以看看，不优化过不了。</li>
+</ul>
+<h3 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6670765/">AcWing 423. 采药 - AcWing</a>：简单的01背包变种，但是需要注意优化的时候二层循环需要反着来，因为<code>dp[i-1][]]j]</code>变成<code>dp[j]</code>前者没有优化但是后者优化了。需要反着来就是没有优化的结果。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6676794/">AcWing 1024. 装箱问题 - AcWing</a>：也是01背包问题，只不过dp值不一样，需要初始化。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6693258/">AcWing 1022. 宠物小精灵之收服 - AcWing</a>：这个题目其实就是一个01背包的变体，他的体积可能就是二维的。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6752551/">AcWing 278. 数字组合 - AcWing</a>：这个题目其实就是一个01背包。公式是很容易推断的，但是主要就是对于dp数组的初始化需要考虑一下。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6752686/">AcWing 1023. 买书 - AcWing</a>：完全背包求方案数。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6760940/">AcWing 1021. 货币系统 - AcWing</a>：一样的完全背包求方案数字，<strong>需要看下视频注意下为什么回暴int</strong>。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6772975/">AcWing 532. 货币系统 - AcWing</a>：这个题目用到了线性代数中极大无关组的概念。可以注意下<a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/1112186/">为什么完全背包和01背包优化后第二层循环不一样</a>。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6816621/">AcWing 6. 多重背包问题 III - AcWing</a>：这个题目有三种方法，一个是基础版本，一个是二进制优化，一个是单调队列优化。<strong>后面两种方法可以过</strong>，可以参考下。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7249148/">AcWing 8. 二维费用的背包问题 - AcWing</a>：简单的01背包问题的二维费用模板。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7249290/">AcWing 1019. 庆功会 - AcWing</a>：多重背包的模板题目。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7249992/">AcWing 1020. 潜水员 - AcWing</a>：<strong>这个题目值得看一下</strong>，将二位费用的dp表示转换了一下，需要考虑0的情况。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7250321/">AcWing 12. 背包问题求具体方案 - AcWing</a>：这个题目的字典序很有意思，可以注意一下。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7250664/">AcWing 1013. 机器分配 - AcWing</a>：这个题目就是分组背包加上求方案书数的结合，需要注意是什么转换成分组背包的。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7265485/">AcWing 426. 开心的金明 - AcWing</a>：很简单的01背包问题。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7267746/">AcWing 487. 金明的预算方案 - AcWing</a>：有依赖的背包问题，转化为分组背包很巧妙，而且使用过了二进制优化可以看看。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7271482/">AcWing 7. 混合背包问题 - AcWing</a>：01背包，多重背包，完全背包的合体。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7272148/">AcWing 10. 有依赖的背包问题 - AcWing</a>：很好的一个思想 使用v来划分dp 然后其实思想是分组背包的思想 dfs相当与循环n 然后玄幻体积 然后根据分组（子树所有体积）更新。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7289220/">AcWing 734. 能量石 - AcWing</a>：这个题目考点是贪心+01背包，这个贪心的思想可以看一下。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7289469/">AcWing 11. 背包问题求方案数 - AcWing</a>：其实就是加了另一个dp，需要注意的是dp的状态变化可以总结成一个有向无环图。</li>
+</ul>
+<h3 id="状态机模型"><a href="#状态机模型" class="headerlink" title="状态机模型"></a>状态机模型</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7295609/">AcWing 1049. 大盗阿福 - AcWing</a>：我们正常做是需要依赖前两次的状态的，如果给dp加上两个状态我们可以只依赖上一次的状态。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7295897/">AcWing 1057. 股票买卖 IV - AcWing</a>：也是两个状态但是有一个交易限制需要注意，我们把限制加入了dp。并且初始化持有股票必须是无穷大，因为不然我们就会有一个不用买就卖的现象。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7296055/">AcWing 1058. 股票买卖 V - AcWing</a>：两个状态已经不满足了，需要三个状态，并且需要明确状态的入口和出口。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7303949/">AcWing 1052. 设计密码 - AcWing</a>：根据kmp来的一个状态机，可以看看</li>
+</ul>
+<h3 id="状态压缩dp"><a href="#状态压缩dp" class="headerlink" title="状态压缩dp"></a>状态压缩dp</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7327770/">AcWing 1064. 小国王 - AcWing</a>：棋盘类状态压缩但是限制了个数</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7332089/">AcWing 327. 玉米田 - AcWing</a>：针对上题目进行了优化</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7332943/">AcWing 292. 炮兵阵地 - AcWing</a>：前面两题的升级版，需要用到前两次的状态，重点看下滚动数组如何更新</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7339433/">AcWing 524. 愤怒的小鸟 - AcWing</a>：集合类的状态压缩，这个题目将抛物线结合，需要看下证明。</li>
+</ul>
+<h3 id="区间dp"><a href="#区间dp" class="headerlink" title="区间dp"></a>区间dp</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7348791/">AcWing 1068. 环形石子合并 - AcWing</a>：主要就是如何破环成链，需要注意一下dp循环的i，j取值。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7349784/">AcWing 320. 能量项链 - AcWing</a>：如何简化a数组。</li>
+</ul>
+<hr>
+<h2 id="高级数据结构"><a href="#高级数据结构" class="headerlink" title="高级数据结构"></a>高级数据结构</h2><h3 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7169858/">AcWing 1275. 最大数 - AcWing</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7173201/">AcWing 245. 你能回答这些问题吗 - AcWing</a>：这里需要设计一下线段树结构Node内容，考虑到涉及到连续子区间如何更新。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7175944/">AcWing 246. 区间最大公约数 - AcWing</a>：有一个数论知识，<code>gcd(a_1 , a_2 , ... , a_n) = gcd(a_1 , a_2 - a_1 , ... , a_n - a_n-1)</code></li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7192008/">AcWing 243. 一个简单的整数问题2 - AcWing</a>：区间查询区间修改的方法，也就是懒标记怎么使用。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7200831/">AcWing 247. 亚特兰蒂斯 - AcWing</a>：扫描线的使用，注意这个题特殊性太强了。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/7202204/">AcWing 1277. 维护序列 - AcWing</a>：这个题目就是难一点的懒标记，考虑了懒标记的更新问题，如何定义多个懒标记以及如何规定多个懒标记的更新。</li>
+</ul>
+<hr>
+<h2 id="破环成链相关"><a href="#破环成链相关" class="headerlink" title="破环成链相关"></a>破环成链相关</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6967158/">AcWing 5183. 好三元组 - AcWing</a>：这个题目最主要的就是如果圆心不在三角形中间，那么就是三个点之间与圆心夹角只和小于180。换句话说也就是三个点在180°里面也就是数组距离小于c&#x2F;2。</li>
+</ul>
+<hr>
+<h2 id="周赛不会题目汇总"><a href="#周赛不会题目汇总" class="headerlink" title="周赛不会题目汇总"></a>周赛不会题目汇总</h2><ul>
+<li>第114场周赛（acwing）：<a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6806925/">AcWing 5058. 双色球 - AcWing</a>：这个题目是一个dp问题，但是递推式其实很简单，不是数论问题直接算出来。需要注意代码的写法以及边界。</li>
+<li>第115场周赛（acwing）：<a target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/9853191/">AcWing 5133. 奶牛排队 - AcWing</a>：这个题目是个思维题，主要是需要一个奇数链和偶数链一起来推到整个数组，需要确定第一个数字。</li>
+</ul>
+<hr>
+<h2 id="每日一题汇总"><a href="#每日一题汇总" class="headerlink" title="每日一题汇总"></a>每日一题汇总</h2><ul>
+<li>秋季每日一题汇总：<ul>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6941521/">AcWing 5166. 对称山脉 - AcWing</a>：这个题目是dp做出来的，<code>dp[i][j]</code>的含义已经想出来了，就是推导式差点想出来。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6943572/">AcWing 5170. 二进制 - AcWing</a>：这个题目其实前面k个二进制决定了整个长度的总数，这个规律很好找。但是就是如何根据判断给定<strong>K-<br>子串数字和序列</strong>找到对应的前面k个二进制的数目。可以<a target="_blank" rel="noopener" href="https://www.acwing.com/solution/content/201490/">参考题解</a>。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6943982/">AcWing 5164. 所有三角形 - AcWing</a>：这个题目使用dfs不好判断其实就是一个简单的模拟题。我们只需要考虑上下，左右其中的一个方向，也就是我们可以只考虑上和左两个方向。只要这两个方向有黑色，那就-2.这样可以保证不重复。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6967158/">AcWing 5183. 好三元组 - AcWing</a>：这个题目最主要的就是如果圆心不在三角形中间，那么就是三个点之间与圆心夹角只和小于180。换句话说也就是三个点在180°里面也就是数组距离小于c&#x2F;2。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6950803/">AcWing 5179. 分组 - AcWing</a>：Integer之间相比用equals方法不然会错</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6959803/">AcWing 5180. 正方形泳池 - AcWing</a>：这个题目好好看看。思路就是遍历横轴和纵轴，就会满足情况。</li>
+<li><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/code/content/6984355/">AcWing 5198. 整理书籍 - AcWing</a>：这个题目不能用逆序对做，如果交换是相邻的字母交换才可以用逆序对做。</li>
+</ul>
+</li>
+</ul>
+</div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202310301011694.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">waar299</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">74</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">44</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Roxanne299"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Roxanne299" target="_blank" title="Github"><i class="fab fa-github" style="color: #hdhfbb;"></i></a><a class="social-icon" href="https://weibo.com/u/5854824671" target="_blank" title="Weibo"><i class="fa-brands fa-weibo" style="color: #hdhfbb;"></i></a><a class="social-icon" href="mailto:zgyandcxy9@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #hdhfbb;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">摸鱼万岁</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/08/github%E9%85%8D%E7%BD%AEhexo%E9%A1%B5%E9%9D%A2/" title="github配置hexo页面">github配置hexo页面</a><time datetime="2024-03-08T06:59:42.000Z" title="发表于 2024-03-08 14:59:42">2024-03-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/08/%E7%81%AB%E6%9F%B4%E6%8E%92%E9%98%9F/" title="火柴排队">火柴排队</a><time datetime="2024-03-08T05:52:55.000Z" title="发表于 2024-03-08 13:52:55">2024-03-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/08/%E7%A6%BB%E6%95%A3%E5%8C%96/" title="离散化">离散化</a><time datetime="2024-03-08T05:49:46.000Z" title="发表于 2024-03-08 13:49:46">2024-03-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/08/%E9%80%86%E5%BA%8F%E5%AF%B9%E9%97%AE%E9%A2%98/" title="逆序对问题">逆序对问题</a><time datetime="2024-03-08T01:49:47.000Z" title="发表于 2024-03-08 09:49:47">2024-03-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/07/linux%E4%B8%8B%E5%AE%89%E8%A3%85v2ray/" title="linux下安装v2ray">linux下安装v2ray</a><time datetime="2024-03-07T01:38:29.000Z" title="发表于 2024-03-07 09:38:29">2024-03-07</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/hexo%E9%85%8D%E7%BD%AE/"><span class="card-category-list-name">hexo配置</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/java/"><span class="card-category-list-name">java</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/java/properies/"><span class="card-category-list-name">properies</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/linux/"><span class="card-category-list-name">linux</span><span class="card-category-list-count">26</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/spring/"><span class="card-category-list-name">spring</span><span class="card-category-list-count">3</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/spring/aop/"><span class="card-category-list-name">aop</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/spring/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"><span class="card-category-list-name">文件上传</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/spring/%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/"><span class="card-category-list-name">文件下载</span><span class="card-category-list-count">1</span></a></li></ul></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/aop/" style="font-size: 1.1em; color: #999">aop</a> <a href="/tags/JDBC/" style="font-size: 1.1em; color: #999">JDBC</a> <a href="/tags/BFS/" style="font-size: 1.37em; color: #99a4b2">BFS</a> <a href="/tags/java/" style="font-size: 1.1em; color: #999">java</a> <a href="/tags/springboot/" style="font-size: 1.1em; color: #999">springboot</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 1.1em; color: #999">贪心</a> <a href="/tags/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/" style="font-size: 1.1em; color: #999">区间合并</a> <a href="/tags/SpringSecurity/" style="font-size: 1.1em; color: #999">SpringSecurity</a> <a href="/tags/hexo/" style="font-size: 1.1em; color: #999">hexo</a> <a href="/tags/linux/" style="font-size: 1.5em; color: #99a9bf">linux</a> <a href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp/" style="font-size: 1.1em; color: #999">状态压缩dp</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.1em; color: #999">前端</a> <a href="/tags/%E6%A0%91%E5%BD%A2dp/" style="font-size: 1.1em; color: #999">树形dp</a> <a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 1.1em; color: #999">开发</a> <a href="/tags/springmvc/" style="font-size: 1.1em; color: #999">springmvc</a> <a href="/tags/properities/" style="font-size: 1.1em; color: #999">properities</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.23em; color: #999ea6">数据库</a> <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 1.1em; color: #999">二分</a> <a href="/tags/spring/" style="font-size: 1.23em; color: #999ea6">spring</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><span class="card-archive-list-count">13</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><span class="card-archive-list-count">15</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">十二月 2023</span><span class="card-archive-list-count">11</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/10/"><span class="card-archive-list-date">十月 2023</span><span class="card-archive-list-count">28</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">74</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2023-10-30T01:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-03-08T07:21:00.758Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202310301051253.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By waar299</div><div class="framework-info"><br/>
+<div>
+<img src="/img/footer_img.png" style="height:22px"/>
+<a href=\"https://beian.mps.gov.cn/#/query/webSearch?code=42018502007229\" rel=\"noreferrer\" target=\"_blank\">鄂公网安备42018502007229 鄂ICP备2022016767号</a>
+</div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">簡</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'WzecYn1RWHo5TiFzONgqzVTh-gzGzoHsz',
+      appKey: 'RRsRLmxEzDcDvVZKhju8jahX',
+      avatar: 'monsterid',
+      serverURLs: 'https://wzecyn1r.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
