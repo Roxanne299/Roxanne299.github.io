@@ -1,0 +1,277 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>国际象棋 | 塞 尔 达 是 天</title><meta name="author" content="waar299"><meta name="copyright" content="waar299"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="题目描述众所周知，“八皇后” 问题是求解在国际象棋棋盘上摆放 88 个皇后，使得两两之间互不攻击的方案数。 已经学习了很多算法的小蓝觉得 “八皇后” 问题太简单了，意犹未尽。作为一个国际象棋迷，他想研究在 N×M的棋盘上，摆放 K 个马，使得两两之间互不攻击有多少种摆放方案。 由于方案数可能很大，只需计算答案除以 1000000007 (即 109+7) 的余数。 如下图所示，国际象棋中的马摆放在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="国际象棋">
+<meta property="og:url" content="http://blog.600759.xyz/2024/03/26/%E5%9B%BD%E9%99%85%E8%B1%A1%E6%A3%8B/index.html">
+<meta property="og:site_name" content="塞 尔 达 是 天">
+<meta property="og:description" content="题目描述众所周知，“八皇后” 问题是求解在国际象棋棋盘上摆放 88 个皇后，使得两两之间互不攻击的方案数。 已经学习了很多算法的小蓝觉得 “八皇后” 问题太简单了，意犹未尽。作为一个国际象棋迷，他想研究在 N×M的棋盘上，摆放 K 个马，使得两两之间互不攻击有多少种摆放方案。 由于方案数可能很大，只需计算答案除以 1000000007 (即 109+7) 的余数。 如下图所示，国际象棋中的马摆放在">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202310301011694.jpg">
+<meta property="article:published_time" content="2024-03-26T08:39:10.000Z">
+<meta property="article:modified_time" content="2024-03-26T08:39:47.879Z">
+<meta property="article:author" content="waar299">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202310301011694.jpg"><link rel="shortcut icon" href="/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '国际象棋',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-26 16:39:47'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/myloadcss.css?1"><link rel="stylesheet" href="/css/icat.css?1"><!-- hexo injector head_end start --><link rel="icon" href="https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202312191557352.ico" type="image/x-icon"><!-- hexo injector head_end end --></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202310301011694.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">86</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">52</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="icat_menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="icat_menus_item"><a class="site-page" href="/Algrithm/"><i class="fa-fw fas fa-book"></i><span> 算法</span></a></div><div class="icat_menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="icat_menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202310301051253.jpg')"><nav id="nav"><div id="nav-group"><span id="blog-info"><a href="/" title="塞 尔 达 是 天"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202312191558538.png"/><span class="site-name">塞 尔 达 是 天</span></a></span><div id="menus"><div class="menus_items"><div class="icat_menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="icat_menus_item"><a class="site-page" href="/Algrithm/"><i class="fa-fw fas fa-book"></i><span> 算法</span></a></div><div class="icat_menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="icat_menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div><div id="nav-right"></div></div></nav><div id="post-info"><h1 class="post-title">国际象棋</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-26T08:39:10.000Z" title="发表于 2024-03-26 16:39:10">2024-03-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-26T08:39:47.879Z" title="更新于 2024-03-26 16:39:47">2024-03-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%88%B7%E9%A2%98/">刷题</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%88%B7%E9%A2%98/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp/">状态压缩dp</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="国际象棋"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>众所周知，“八皇后” 问题是求解在国际象棋棋盘上摆放 88 个皇后，使得两两之间互不攻击的方案数。</p>
+<p>已经学习了很多算法的小蓝觉得 “八皇后” 问题太简单了，意犹未尽。作为一个国际象棋迷，他想研究在 N×M的棋盘上，摆放 K 个马，使得两两之间互不攻击有多少种摆放方案。</p>
+<p>由于方案数可能很大，只需计算答案除以 1000000007 (即 109+7) 的余数。</p>
+<p>如下图所示，国际象棋中的马摆放在棋盘的方格内，走 “日” 字，位于 (x,y) 格的马（第 x 行第 y 列）可以攻击 (x+1,y+2)、(x+1,y−2)、(x−1,y+2)、(x−1,y−2)、(x+2,y+1)、(x+2,y−1)(+2,−1)、(x−2,y+1)(−2,+1) 和 (x−2,y−1) 共 88 个格子。</p>
+<p><img src="https://cdn.acwing.com/media/article/image/2021/05/12/19_3c6f425bb2-QQ%E6%88%AA%E5%9B%BE20210512104039.png" alt="QQ截图20210512104039.png"></p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入一行包含三个正整数 N,M,K分别表示棋盘的行数、列数和马的个数。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出一个整数，表示摆放的方案数除以 1000000007 (即 109+7) 的余数。</p>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于 5%的评测用例，K&#x3D;1；<br>对于另外 10%的评测用例，K&#x3D;2；<br>对于另外 10%的评测用例，N&#x3D;1；<br>对于另外 20% 的评测用例，N,M≤6，K≤5；<br>对于另外 25%的评测用例，N≤3，M≤20，K≤12；<br>对于所有评测用例，1≤N≤6，1≤M≤100，1≤K≤20。</p>
+<h3 id="输入样例1："><a href="#输入样例1：" class="headerlink" title="输入样例1："></a>输入样例1：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 2 1</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例1："><a href="#输出样例1：" class="headerlink" title="输出样例1："></a>输出样例1：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<h3 id="输入样例2："><a href="#输入样例2：" class="headerlink" title="输入样例2："></a>输入样例2：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4 4 3</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例2："><a href="#输出样例2：" class="headerlink" title="输出样例2："></a>输出样例2：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">276</span><br></pre></td></tr></table></figure>
+
+<h3 id="输入样例3："><a href="#输入样例3：" class="headerlink" title="输入样例3："></a>输入样例3：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 20 12</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例3："><a href="#输出样例3：" class="headerlink" title="输出样例3："></a>输出样例3：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">914051446</span><br></pre></td></tr></table></figure>
+
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="dfs"><a href="#dfs" class="headerlink" title="dfs"></a>dfs</h3><p>这个题目暴力做法可以过一半的用例，主要就是为了遍历每个马在不在当前位置放置。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Main</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> <span class="number">10</span>,M = <span class="number">110</span>,K = <span class="number">30</span>,res = <span class="number">0</span>,n,m,k;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[][] g = <span class="keyword">new</span> <span class="title class_">int</span>[N][M];</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[] checkx = &#123;<span class="number">2</span>,-<span class="number">2</span>,<span class="number">1</span>,-<span class="number">1</span>,<span class="number">2</span>,-<span class="number">2</span>,<span class="number">1</span>,-<span class="number">1</span>&#125;,checky = &#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,-<span class="number">1</span>,-<span class="number">1</span>,-<span class="number">2</span>,-<span class="number">2</span>&#125;;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y,<span class="type">int</span> d)</span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(d == k)&#123;</span><br><span class="line">            res = (<span class="type">int</span>)((<span class="type">long</span>)res + <span class="number">1</span>) % <span class="number">1000000007</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(x &gt; n || y &gt; m) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">0</span>;l &lt; <span class="number">8</span>;l++)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">fx</span> <span class="operator">=</span> x + checkx[l],fy = y + checky[l];</span><br><span class="line">            <span class="keyword">if</span>(fx &lt; <span class="number">1</span> || fy &lt; <span class="number">1</span> || fx &gt; n || fy &gt; m ) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(g[fx][fy] == <span class="number">1</span>)&#123;</span><br><span class="line">                index = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">tx</span> <span class="operator">=</span> x + (y + <span class="number">1</span>) / (m + <span class="number">1</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">ty</span> <span class="operator">=</span> (y + <span class="number">1</span> == m + <span class="number">1</span> ? <span class="number">1</span> : y + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(index == <span class="number">0</span>)&#123;</span><br><span class="line">            g[x][y] = <span class="number">1</span>;</span><br><span class="line">            dfs(tx,ty,d+<span class="number">1</span>);</span><br><span class="line">            g[x][y] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(tx,ty,d);</span><br><span class="line">    &#125;</span><br><span class="line">       </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        n = sc.nextInt();m = sc.nextInt();k = sc.nextInt();</span><br><span class="line">        dfs(<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">        System.out.println(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="状态压缩dp"><a href="#状态压缩dp" class="headerlink" title="状态压缩dp"></a>状态压缩dp</h3><p><img src="https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202403261637854.png" alt="image-20240326163701859"></p>
+<p><strong>注意</strong>：如果使用滚动数组，记住，需要清零。并且我们需要注意两个二进制数的判断。如果想判断i第1位是不是1.是<code> (i &amp; (1 &lt;&lt; 1)) != 0</code>不是<code> (i &amp; (1 &lt;&lt; 1)) == 1</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Main</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> <span class="number">6</span>,M = <span class="number">110</span>,K = <span class="number">30</span>,P = <span class="number">1000000007</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[] index = <span class="keyword">new</span> <span class="title class_">int</span>[N];</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[][] g = <span class="keyword">new</span> <span class="title class_">int</span>[M][M];</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[][][][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[M][<span class="number">1</span> &lt;&lt; N][<span class="number">1</span>&lt;&lt;N][K];</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">lowbit</span><span class="params">(<span class="type">int</span> x)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (-x) &amp; x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取x的二进制表示中有多少1</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">get</span><span class="params">(<span class="type">int</span> x)</span>&#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(x &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            x -= lowbit(x);</span><br><span class="line">            res++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> sc.nextInt(),m = sc.nextInt(),kk = sc.nextInt();</span><br><span class="line"></span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;i &lt;= m + <span class="number">2</span>;i++)&#123;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="number">0</span>;s1 &lt; (<span class="number">1</span> &lt;&lt; n);s1++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="number">0</span>;s2 &lt; (<span class="number">1</span> &lt;&lt; n);s2++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(((s1&gt;&gt;<span class="number">2</span>) &amp; s2) != <span class="number">0</span> || (s1 &amp; (s2 &gt;&gt; <span class="number">2</span>)) != <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;j &lt; (<span class="number">1</span> &lt;&lt; n);j++)&#123;</span><br><span class="line">                        <span class="keyword">if</span>((s1 &amp; (j &gt;&gt; <span class="number">1</span>)) != <span class="number">0</span> || ((s1 &gt;&gt; <span class="number">1</span>) &amp; j ) != <span class="number">0</span> ) <span class="keyword">continue</span>;</span><br><span class="line">                        <span class="keyword">if</span>(((s2 &gt;&gt; <span class="number">2</span>) &amp; j ) != <span class="number">0</span> || (s2 &amp; (j &gt;&gt; <span class="number">2</span>)) != <span class="number">0</span> ) <span class="keyword">continue</span>;</span><br><span class="line">                    </span><br><span class="line">                        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> get(j);k &lt;= kk;k++)&#123;</span><br><span class="line">                            dp[i][s2][j][k] = (<span class="type">int</span>)(((<span class="type">long</span>)dp[i][s2][j][k] + dp[i-<span class="number">1</span>][s1][s2][k - get(j)]) % P);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        System.out.println(dp[m+<span class="number">2</span>][<span class="number">0</span>][<span class="number">0</span>][kk]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://blog.600759.xyz/about">waar299</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://blog.600759.xyz/2024/03/26/%E5%9B%BD%E9%99%85%E8%B1%A1%E6%A3%8B/">http://blog.600759.xyz/2024/03/26/%E5%9B%BD%E9%99%85%E8%B1%A1%E6%A3%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">此文章版权归waar299所有，如有转载，请注明来自原作者!</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202310301011694.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/03/26/%E6%AF%95%E4%B8%9A%E5%B1%A5%E8%A1%8C%E9%97%AE%E9%A2%98/" title="毕业履行问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">毕业履行问题</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202310301011694.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">waar299</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">86</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">52</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Roxanne299"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Roxanne299" target="_blank" title="Github"><i class="fab fa-github" style="color: #hdhfbb;"></i></a><a class="social-icon" href="https://weibo.com/u/5854824671" target="_blank" title="Weibo"><i class="fa-brands fa-weibo" style="color: #hdhfbb;"></i></a><a class="social-icon" href="mailto:zgyandcxy9@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #hdhfbb;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">摸鱼万岁</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="toc-number">1.3.</span> <span class="toc-text">数据范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B1%EF%BC%9A"><span class="toc-number">1.4.</span> <span class="toc-text">输入样例1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B1%EF%BC%9A"><span class="toc-number">1.5.</span> <span class="toc-text">输出样例1：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B2%EF%BC%9A"><span class="toc-number">1.6.</span> <span class="toc-text">输入样例2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B2%EF%BC%9A"><span class="toc-number">1.7.</span> <span class="toc-text">输出样例2：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B3%EF%BC%9A"><span class="toc-number">1.8.</span> <span class="toc-text">输入样例3：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B3%EF%BC%9A"><span class="toc-number">1.9.</span> <span class="toc-text">输出样例3：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">解题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dfs"><span class="toc-number">2.1.</span> <span class="toc-text">dfs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp"><span class="toc-number">2.2.</span> <span class="toc-text">状态压缩dp</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/26/%E5%9B%BD%E9%99%85%E8%B1%A1%E6%A3%8B/" title="国际象棋">国际象棋</a><time datetime="2024-03-26T08:39:10.000Z" title="发表于 2024-03-26 16:39:10">2024-03-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/26/%E6%AF%95%E4%B8%9A%E5%B1%A5%E8%A1%8C%E9%97%AE%E9%A2%98/" title="毕业履行问题">毕业履行问题</a><time datetime="2024-03-26T02:38:34.000Z" title="发表于 2024-03-26 10:38:34">2024-03-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/26/%E6%95%B0%E6%98%9F%E6%98%9F/" title="数星星">数星星</a><time datetime="2024-03-26T02:37:01.000Z" title="发表于 2024-03-26 10:37:01">2024-03-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/25/%E5%9F%8E%E5%B8%82%E6%B8%B8%E6%88%8F/" title="城市游戏">城市游戏</a><time datetime="2024-03-25T07:40:18.000Z" title="发表于 2024-03-25 15:40:18">2024-03-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/25/%E7%9B%B4%E6%96%B9%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2/" title="直方图中最大的矩形">直方图中最大的矩形</a><time datetime="2024-03-25T07:38:33.000Z" title="发表于 2024-03-25 15:38:33">2024-03-25</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/Roxanne299/PictureBed//blog/202310301051253.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By waar299</div><div class="framework-info"><br/>
+<div>
+<img src="/img/footer_img.png" style="height:22px"/>
+<a href=\"https://beian.mps.gov.cn/#/query/webSearch?code=42018502007229\" rel=\"noreferrer\" target=\"_blank\">鄂公网安备42018502007229 鄂ICP备2022016767号</a>
+</div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">簡</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'WzecYn1RWHo5TiFzONgqzVTh-gzGzoHsz',
+      appKey: 'RRsRLmxEzDcDvVZKhju8jahX',
+      avatar: 'monsterid',
+      serverURLs: 'https://wzecyn1r.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
